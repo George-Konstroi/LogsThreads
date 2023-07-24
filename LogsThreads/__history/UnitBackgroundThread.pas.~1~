@@ -1,0 +1,46 @@
+unit UnitBackgroundThread;
+
+interface
+
+uses
+  System.Classes,
+  System.SysUtils, System.IOUtils;
+
+type
+  TUnitBackgroundThread = class(TThread)
+    private
+      paused: Boolean;
+    protected
+      procedure Execute; override;
+    public
+      procedure Pause;
+      procedure Continue;
+  end;
+
+implementation
+
+{ TUnitBackgroundThread }
+
+procedure TUnitBackgroundThread.Continue;
+begin
+  paused := False;
+end;
+
+procedure TUnitBackgroundThread.Execute;
+var
+  logFile: TextFile;
+begin
+  try
+    paused := False;
+    //AssignFile(logFile, '');
+  finally
+
+  end;
+end;
+
+procedure TUnitBackgroundThread.Pause;
+begin
+
+end;
+
+end.
