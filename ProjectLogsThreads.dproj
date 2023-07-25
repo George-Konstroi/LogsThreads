@@ -159,6 +159,11 @@
             <FormType>dfm</FormType>
             <DesignClass>TService</DesignClass>
         </DCCReference>
+        <DCCReference Include="UnitBackgroundThread.pas"/>
+        <DCCReference Include="UnitFormLogsThreads.pas">
+            <Form>FormLogsThreads</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

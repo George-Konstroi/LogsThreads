@@ -9,12 +9,14 @@ uses
 type
   TUnitBackgroundThread = class(TThread)
     private
-      paused: Boolean;
     protected
       procedure Execute; override;
     public
       procedure Pause;
       procedure Continue;
+    var
+      logFile: TextFile;
+      paused: Boolean;
   end;
 
 implementation
@@ -28,7 +30,7 @@ end;
 
 procedure TUnitBackgroundThread.Execute;
 var
-  logFile: TextFile;
+  line: string;
 begin
   try
     paused := False;
@@ -36,8 +38,10 @@ begin
     Rewrite(logFile);
 
     while not Terminated do begin
-      if not paused then
-        Writeln(logFile, 'Logs From Background Thread: ' + DateTimeToStr(Now));
+      if not paused then begin
+        line := 'Logs From Background Thread: ' + DateTimeToStr(Now);
+        Writeln(logFile, line);
+      end;
 
       TThread.Sleep(1000);
     end;

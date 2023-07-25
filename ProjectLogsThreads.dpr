@@ -2,7 +2,9 @@ program ProjectLogsThreads;
 
 uses
   Vcl.SvcMgr,
-  UnitLogsThreads in 'UnitLogsThreads.pas' {LogsThreads: TService};
+  UnitLogsThreads in 'UnitLogsThreads.pas' {LogsThreads: TService},
+  UnitBackgroundThread in 'UnitBackgroundThread.pas',
+  UnitFormLogsThreads in 'UnitFormLogsThreads.pas' {FormLogsThreads};
 
 {$R *.RES}
 
@@ -23,6 +25,8 @@ begin
   //
   if not Application.DelayInitialize or Application.Installing then
     Application.Initialize;
-  Application.CreateForm(TLogsThreads, LogsThreads);
+  //Application.CreateForm(TLogsThreads, LogsThreads);
+  Application.CreateForm(TFormLogsThreads, FormLogsThreads);
+  FormLogsThreads.ShowModal;
   Application.Run;
 end.
